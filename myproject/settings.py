@@ -37,9 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'projectApp'
+    'projectApp',
+    "corsheaders",
+    "rest_framework",
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
+REST_FRAMEWORK = {
+       'DEFAULT_AUTHENTICATION_CLASSES': (
+           'rest_framework_simplejwt.authentication.JWTAuthentication',
+       )
+   }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -48,9 +56,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'myproject.urls'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "Your_Email"
+EMAIL_HOST_PASSWORD = "Your_Password"
+TIME_ZONE = 'Asia/Kolkata'
 
 TEMPLATES = [
     {

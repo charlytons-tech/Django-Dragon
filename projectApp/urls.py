@@ -1,7 +1,11 @@
 from django.urls import path
-from . import views
+from .views import RegistrationView,LoginView
+# from rest_framework_simplejwt.views import (
+#     TokenRefreshView,
+# )
+# from rest_framework_simplejwt.views import TokenBlacklistView
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('healthcare/', views.healthcare, name='healthcare'),
+    path("register", RegistrationView.as_view(), name="register"),
+    path("login", LoginView.as_view(), name="login"),
 ]
